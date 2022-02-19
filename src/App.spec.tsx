@@ -1,8 +1,12 @@
-import{render} from '@testing-library/react'
-import App from './App'
+import { getByTestId, render } from '@testing-library/react';
+import App from './App';
 
-test ("sum",()=>{
-  const{getByText} = render(<App/>)
+test('myfunction', () => {
+  const { getByText } = render(<App />);
+  const div = getByText('Hello World')
 
-  expect(getByText('Vamos lá')).toBeTruthy()
+ // const test = getByTestId('test');
+
+  expect(div).toHaveClass('text');
 });
+  
