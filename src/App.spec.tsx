@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 
@@ -13,7 +13,7 @@ describe('App componet', () => {
     expect(getByText('Klesio')).toBeInTheDocument();
   });
 
-  it('should be able to add new item to the list', () => {
+  it('should be able to add new item to the list', async () => {
     const { getByText, getByPlaceholderText } = render(<App />);
 
     const inputElement = getByPlaceholderText('Novo item');
@@ -22,6 +22,24 @@ describe('App componet', () => {
     userEvent.type(inputElement, 'Novo');
     userEvent.click(addButton);
 
-    expect(getByText('Novo')).toBeInTheDocument();
+    await waitFor(()=>{
+      expect(getByText('Novo')).toBeInTheDocument();
+    })
+
   });
+
+  it('should be able to remove new item to the list', async () => {
+    const { getByText, getAllByText } = render(<App />);
+
+    const addButton = getByText('Adicionar');
+    const removeButons = getAllByText('Remover')
+   
+    userEvent.click(removeButons[0]);
+
+    await waitForElementToBeRemoved(()=>{
+      return getByText('Diego')
+    })
+
+  });
+
 });

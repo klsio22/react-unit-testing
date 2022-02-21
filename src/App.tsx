@@ -5,7 +5,15 @@ function App() {
   const [list, setList] = useState(['Diego', 'Rodz', 'Mayk', 'Klesio']);
 
   function addToList() {
-    setList((state) => [...state, newItem]);
+    setTimeout(() => {
+      setList((state) => [...state, newItem]);
+    }, 500);
+  }
+
+  function removeFromList(item : string) {
+    setTimeout(() => {
+      setList(state => state.filter(item => item !== item));
+    }, 500);
   }
 
   return (
@@ -15,7 +23,10 @@ function App() {
 
       <ul>
         {list.map((item) => (
-          <li key={item}>{item}</li>
+          <li key={item}>
+            {item}
+            <button onClick={() => removeFromList(item)}>Remover</button>
+          </li>
         ))}
       </ul>
     </>
