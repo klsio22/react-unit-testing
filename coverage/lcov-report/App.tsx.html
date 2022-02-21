@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>23/23</span>
+                <span class='fraction'>25/25</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>23/23</span>
+                <span class='fraction'>25/25</span>
             </div>
         
             
@@ -86,49 +86,55 @@
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useState } from "react";
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useState } from 'react';
 &nbsp;
 function App() {
-  const [list, setList] = useState(['Diego','Rodz','Mayk','Klesio'])
+  const [newItem, setNewItem] = useState('');
+  const [list, setList] = useState(['Diego', 'Rodz', 'Mayk', 'Klesio']);
 &nbsp;
-  function addToList(){
-    setList(state=&gt; [...state,'Novo'])
+  function addToList() {
+    setList((state) =&gt; [...state, newItem]);
   }
-  
-  return(
+&nbsp;
+  return (
     &lt;&gt;
-      &lt;button onClick={addToList}&gt;
-        Adicionar
-      &lt;/button&gt;
+    &lt;input placeholder='Novo item' value={newItem} onChange={e =&gt; setNewItem (e.target.value)} /&gt;
+      &lt;button onClick={addToList}&gt;Adicionar&lt;/button&gt;
 &nbsp;
       &lt;ul&gt;
-        {list.map(item =&gt; &lt;li key={item}&gt;{item}&lt;/li&gt;)}
+        {list.map((item) =&gt; (
+          &lt;li key={item}&gt;{item}&lt;/li&gt;
+        ))}
       &lt;/ul&gt;
     &lt;/&gt;
-  )
+  );
 }
 &nbsp;
 export default App;
@@ -139,7 +145,7 @@ export default App;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Sun Feb 20 2022 21:21:55 GMT-0300 (Horário Padrão de Brasília)
+                at Sun Feb 20 2022 22:00:35 GMT-0300 (Horário Padrão de Brasília)
             </div>
         <script src="prettify.js"></script>
         <script>

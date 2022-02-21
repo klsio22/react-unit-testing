@@ -4,14 +4,6 @@ import '@testing-library/jest-dom';
 
 import App from './App';
 
-/* test('myfunction', () => {
-  const { getByTestId } = render(<App />);
-  const h1 = getByTestId('h1')
-
-
-  expect(h1).toHaveClass('teste');
-}); */
-
 describe('App componet', () => {
   it('should render list item', () => {
     const { getByText } = render(<App />);
@@ -22,14 +14,13 @@ describe('App componet', () => {
   });
 
   it('should be able to add new item to the list', () => {
-    const { getByText, debug } = render(<App />);
+    const { getByText, getByPlaceholderText } = render(<App />);
+
+    const inputElement = getByPlaceholderText('Novo item');
     const addButton = getByText('Adicionar');
 
-    debug()//mostra ação executada no processo de execução da aplicação
-
+    userEvent.type(inputElement, 'Novo');
     userEvent.click(addButton);
-
-    debug()
 
     expect(getByText('Novo')).toBeInTheDocument();
   });
